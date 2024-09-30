@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     withEnv(["DOCKER_HOST=${env.DOCKER_HOST}"]) {
-                        docker.withRegistry('http://nexus.pgls-schools.net:8071/', 'nexus-creds') {
+                        docker.withRegistry('http://nexus.pgls-schools.net:8071/', 'docker-nexus-creds') {
                             docker.image("${REPO_URL}/${IMAGE_NAME}:${IMAGE_TAG}").push()
                         }
                     }
