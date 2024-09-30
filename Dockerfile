@@ -1,12 +1,16 @@
 FROM node:14
 WORKDIR /app
 
-# Copy package files and clean cache
+# Copy package.json and package-lock.json
 COPY package*.json ./
-RUN npm cache clean --force
+
+# List contents of /app to debug
+RUN ls -la
+
+# Install dependencies
 RUN npm install
 
-# Copy rest of the application
+# Copy the rest of the app
 COPY . .
 
 EXPOSE 3000
